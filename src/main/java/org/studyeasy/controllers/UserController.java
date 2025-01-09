@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/users")
@@ -16,6 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     private final UserService userService = new UserService();
+
+    @Autowired
+    private AccessTokenController accessTokenController;
 
     // CREATE
     @PostMapping
@@ -27,6 +33,14 @@ public class UserController {
     // READ
     @GetMapping
     public List<User> getAllUsers() {
+        // Fetch access token before adding a user (optional)
+        Map<String, Object> tokenResponse = accessTokenController.generateAccessToken();
+        String accessToken = (String) tokenResponse.get("accessToken");
+
+
+        System.out.println(accessToken);
+        // Use the access token if necessary for additional API calls
+
         return userService.getAllUsers();
     }
 
