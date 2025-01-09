@@ -2,28 +2,20 @@ package org.studyeasy.controllers;
 
 import org.studyeasy.models.User;
 import org.studyeasy.services.UserService;
-
 import java.util.List;
-
-import org.studyeasy.models.User;
-import org.studyeasy.services.UserService;
 import org.springframework.web.bind.annotation.*;
 
-        import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 
 @RestController
 @RequestMapping("/api/users")
+
 public class UserController {
 
     private final UserService userService = new UserService();
-
-    //    public void displayAllUsers() {
-//        List<User> users = userService.getAllUsers();
-//        for (User user : users) {
-//            System.out.println(", Username: " + user.getUsername() + ", Password: " + user.getPassword());
-//        }
-//    }
-
 
     // CREATE
     @PostMapping
