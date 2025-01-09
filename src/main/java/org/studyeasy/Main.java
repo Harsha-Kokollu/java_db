@@ -1,14 +1,17 @@
 package org.studyeasy;
 
-import org.studyeasy.controllers.UserController;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+@SpringBootApplication
 public class Main {
     public static void main(String[] args) {
-        UserController userController = new UserController();
-        userController.displayAllUsers();
+        SpringApplication.run(Main.class, args);
+        System.out.println("Server is running on http://localhost:8081");
     }
 }
+
+
+
+
 
